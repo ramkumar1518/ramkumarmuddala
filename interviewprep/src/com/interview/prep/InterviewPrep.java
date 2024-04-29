@@ -16,6 +16,14 @@ public class InterviewPrep {
                 new StringBuilder(x).reverse())).toList().stream().max(Comparator.comparingInt(String::length));
         System.out.println(collect);
 
+        String  palString= "madam2";
+        boolean palCheck = palString.contentEquals(new StringBuilder(palString).reverse());
+        if(palCheck){
+            System.out.println("Palinedrom String " + palString);
+        }else{
+            System.out.println("Not Palinedrom String " + palString);
+        }
+
 
         List<String> stationeryList = Arrays.asList("Pen", "Eraser", "Note Book", "Pen", "Pencil", "Stapler", "Note Book", "Pencil");
 
@@ -48,6 +56,20 @@ public class InterviewPrep {
         List<String> listOfStrings2 = Arrays.asList("Java", "Python", "C#", "HTML", "Kotlin", "C++", "COBOL", "C");
         List<String> collect5 = listOfStrings2.stream().sorted(Comparator.comparing(String::length)).collect(Collectors.toList());
         System.out.println(collect5);
+
+
+        List<Hosting> hostinglist = new ArrayList<>();
+        hostinglist.add(new Hosting(1, "liquidweb.com", 80000));
+        hostinglist.add(new Hosting(2, "linode.com", 90000));
+        hostinglist.add(new Hosting(3, "digitalocean.com", 120000));
+        hostinglist.add(new Hosting(4, "aws.amazon.com", 200000));
+        hostinglist.add(new Hosting(5, "mkyong.com", 1));
+        hostinglist.add(new Hosting(6, "linode.com", 100000));
+
+        LinkedHashMap<String, Long> collect6 = hostinglist.stream().sorted(Comparator.comparing(Hosting::getWebsites).reversed()).collect(Collectors.toMap(Hosting::getName, Hosting::getWebsites,
+                (o1, o2) -> o2, LinkedHashMap::new));
+        System.out.println(collect6);
+
 
     }
 }
