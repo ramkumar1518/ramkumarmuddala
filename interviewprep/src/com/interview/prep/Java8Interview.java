@@ -151,6 +151,8 @@ public class Java8Interview {
 
         stringsStartsWithNumber();
 
+        charactervowels();
+
 
     }
 
@@ -162,7 +164,7 @@ public class Java8Interview {
                 toList();
         List<String> list1 = Arrays.stream(words).filter(x -> x.startsWith("1")).toList();
 
-        System.out.println(list1);
+        System.out.println(list);
 
     }
 
@@ -242,6 +244,15 @@ public class Java8Interview {
         Map<String, Long> collect = Arrays.stream(name.split(""))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(collect1 + "characterFrequency");
+    }
+
+    private static void charactervowels() {
+        String name = "javaprepunitedlovecountre";
+        Map<String, Long> collect = Arrays.stream(name.split("")).filter(x -> x.toLowerCase().matches(".*[aeiou].*")).
+                collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        name.toLowerCase().matches(".*[aeiou].*");
+
+        System.out.println(collect + "vowels");
     }
 
     private static void wordFrequency() {
